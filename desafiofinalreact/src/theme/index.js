@@ -1,1 +1,1 @@
-export { default as theme} from './Colors'
+export { default as theme } from './Colors'

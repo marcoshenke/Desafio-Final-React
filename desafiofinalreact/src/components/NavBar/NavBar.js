@@ -2,9 +2,8 @@ import React from 'react';
 
 import {AppBar, Box, Toolbar, IconButton, Typography, Menu, Container, Avatar, Button, Tooltip, MenuItem } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
-import {useTheme} from '@mui/material/styles'
 
-import {} from '../../theme/Colors/Colors'
+import {theme} from '../../theme'
 import NbaLogo  from '../NbaLogo'
 
 
@@ -30,12 +29,9 @@ function NavBar() {
     setAnchorElUser(null);
   };
 
-  const theme = useTheme()
-    console.log(theme)
-
   return (
-    <AppBar position="static">
-      <Container maxWidth="xl">
+    <AppBar position="static" theme={theme} color='primary'>
+      <Container maxWidth="xlg">
         <Toolbar disableGutters>
           <NbaLogo sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />
           <Typography
