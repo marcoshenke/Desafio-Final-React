@@ -10,6 +10,8 @@ import NbaLogo  from '../NbaLogo'
 const pages = ['Players', 'Teams', 'Newsletter'];
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
 
+
+
 function NavBar() {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
@@ -33,7 +35,7 @@ function NavBar() {
     <AppBar position="static" theme={theme} color='primary'>
       <Container maxWidth="xlg">
         <Toolbar disableGutters>
-          <NbaLogo sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />
+          <NbaLogo  />
           <Typography
             variant="h6"
             color="primary"
