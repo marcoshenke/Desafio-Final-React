@@ -1,20 +1,19 @@
 import React from 'react';
 
-import {AppBar, Box, Toolbar, IconButton, Typography, Menu, Container, Avatar, Button, Tooltip, MenuItem } from '@mui/material';
+import {AppBar, Box, Toolbar, IconButton, Typography, Menu, Container, Avatar, Button, Tooltip, MenuItem} from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
-
-
-
-
-import NbaLogo  from '../NbaLogo'
 import { Link } from 'react-router-dom';
 
+import {StyledLink} from '../StyledLink'
+import NbaLogo  from '../NbaLogo'
 
 const pages = [
-  'Players',
-  'Teams', 
-  'Newsletter'
-];
+  {text: 'Home', url: '/'},
+  {text: 'Players', url: '/players'},
+  {text: 'Teams', url: '/teams'},
+  {text: 'Newsletter', url: '/newsletter'},
+]
+
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
 
 const NavBar = () => {
@@ -95,10 +94,10 @@ const NavBar = () => {
                 display: { xs: 'block', md: 'none' },
               }}
             >
-              {pages.map((page) => (
-                <MenuItem key={page} onClick={handleCloseNavMenu}>
+              {pages.map((page, index) => (
+                <MenuItem key={index} onClick={handleCloseNavMenu}>
                   <Typography textAlign="center">
-                  <Link to={page.href}>{page.text}</Link>
+                  <StyledLink to={page.url}>{page.text}</StyledLink>
                   </Typography>
                 </MenuItem>
               ))}             
@@ -112,7 +111,10 @@ const NavBar = () => {
                 onClick={handleCloseNavMenu}
                 sx={{ my: 2, color: 'white', display: 'block' }}
               >
-                {page}
+                <StyledLink 
+                to={page.url}
+                
+                >{page.text}</StyledLink>
               </Button>
             ))}
           </Box>
