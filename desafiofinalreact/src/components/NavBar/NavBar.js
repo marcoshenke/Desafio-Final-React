@@ -32,7 +32,12 @@ function NavBar() {
   };
 
   return (
-    <AppBar position="static" theme={theme} color='primary'>
+    <AppBar 
+    position="static" 
+    theme={theme} 
+    color='primary'
+    sx={{height: 100}}
+    >
       <Container maxWidth="xlg">
         <Toolbar disableGutters>
           <NbaLogo  />

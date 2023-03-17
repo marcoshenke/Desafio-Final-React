@@ -2,12 +2,13 @@ import React from "react"
 import {NavBar, FooterPag} from 'components'
 
 
+
 const Home = () => {
     return (
-        <div>
-            <NavBar />
+        < >
+             <NavBar />
             <FooterPag />
-        </div>
+        </> 
     )
 }
 
