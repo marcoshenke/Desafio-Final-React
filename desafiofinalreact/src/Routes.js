@@ -1,6 +1,5 @@
 import  { Routes as Switch, Route, BrowserRouter} from 'react-router-dom'
-import {ThemeProvider} from '@mui/styles'
-import {theme} from './theme'
+
 
 
 import Home from './views/Home'
@@ -11,7 +10,7 @@ import Newsletter from './views/Newsletter'
 
 const Routes = () => {
     return (
-    <ThemeProvider theme={theme}>
+    
         <BrowserRouter>
             <Switch>
                 <Route path="/" element={<Home />}/>
@@ -20,7 +19,7 @@ const Routes = () => {
                 <Route path="/newsletter" element={<Newsletter />}/>                
             </Switch>
         </BrowserRouter>
-    </ThemeProvider>
+    
         
     )
 }

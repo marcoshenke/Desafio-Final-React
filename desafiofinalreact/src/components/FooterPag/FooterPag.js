@@ -1,6 +1,6 @@
 import React from 'react';
 
-import {AppBar, Box, Toolbar, IconButton, Typography, Menu, Container, Avatar,  Tooltip } from '@mui/material';
+import {AppBar, Box, Toolbar, IconButton, Typography, Menu, Container,  Tooltip } from '@mui/material';
 
 
 import {theme} from '../../theme'
@@ -57,7 +57,7 @@ function NavBar() {
           <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Open settings">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
+                
               </IconButton>
             </Tooltip>
             <Menu

@@ -1,10 +1,11 @@
 import React from "react"
-import {NavBar} from 'components'
+import {NavBar, FooterPag} from 'components'
 
 const Players = () => {
     return (
         <div>
             <NavBar />
+            <FooterPag />
         </div>
     )
 }

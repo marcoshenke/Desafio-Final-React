@@ -3,16 +3,21 @@ import React from 'react';
 import {AppBar, Box, Toolbar, IconButton, Typography, Menu, Container, Avatar, Button, Tooltip, MenuItem } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
 
-import {theme} from '../../theme'
+
+
+
 import NbaLogo  from '../NbaLogo'
+import { Link } from 'react-router-dom';
 
 
-const pages = ['Players', 'Teams', 'Newsletter'];
+const pages = [
+  'Players',
+  'Teams', 
+  'Newsletter'
+];
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
 
-
-
-function NavBar() {
+const NavBar = () => {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
 
@@ -31,11 +36,12 @@ function NavBar() {
     setAnchorElUser(null);
   };
 
+ 
+
   return (
     <AppBar 
     position="static" 
-    theme={theme} 
-    color='primary'
+    color="primary"
     sx={{height: 100}}
     >
       <Container maxWidth="xlg">
@@ -91,9 +97,12 @@ function NavBar() {
             >
               {pages.map((page) => (
                 <MenuItem key={page} onClick={handleCloseNavMenu}>
-                  <Typography textAlign="center">{page}</Typography>
+                  <Typography textAlign="center">
+                  <Link to={page.href}>{page.text}</Link>
+                  </Typography>
                 </MenuItem>
-              ))}
+              ))}             
+            
             </Menu>
           </Box>          
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
@@ -111,7 +120,7 @@ function NavBar() {
           <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Open settings">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
+                <Avatar alt="Minha foto" src="/static/images/avatar/2.jpg" />
               </IconButton>
             </Tooltip>
             <Menu
@@ -135,6 +144,7 @@ function NavBar() {
                   <Typography textAlign="center">{setting}</Typography>
                 </MenuItem>
               ))}
+
             </Menu>
           </Box>
         </Toolbar>
