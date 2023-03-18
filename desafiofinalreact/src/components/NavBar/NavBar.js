@@ -4,7 +4,6 @@ import {AppBar, Box, Toolbar, IconButton, Typography, Menu, Container, Avatar, B
 import MenuIcon from '@mui/icons-material/Menu';
 import { Link } from 'react-router-dom';
 
-import {StyledLink} from '../StyledLink'
 import NbaLogo  from '../NbaLogo'
 
 const pages = [
@@ -97,7 +96,7 @@ const NavBar = () => {
               {pages.map((page, index) => (
                 <MenuItem key={index} onClick={handleCloseNavMenu}>
                   <Typography textAlign="center">
-                  <StyledLink to={page.url}>{page.text}</StyledLink>
+                  <Link to={page.url}>{page.text}</Link>
                   </Typography>
                 </MenuItem>
               ))}             
@@ -109,12 +108,12 @@ const NavBar = () => {
               <Button
                 key={page}
                 onClick={handleCloseNavMenu}
-                sx={{ my: 2, color: 'white', display: 'block' }}
+                sx={{ my: 2, color: 'white', display: 'block'}}                                
               >
-                <StyledLink 
+                <Link 
                 to={page.url}
-                
-                >{page.text}</StyledLink>
+                style={{ color: 'inherit', textDecoration: 'inherit'}}                
+                >{page.text}</Link>
               </Button>
             ))}
           </Box>
