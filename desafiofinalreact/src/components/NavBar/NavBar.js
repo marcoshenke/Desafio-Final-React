@@ -1,19 +1,31 @@
-import React from 'react';
+import React from "react";
 
-import {AppBar, Box, Toolbar, IconButton, Typography, Menu, Container, Avatar, Button, Tooltip, MenuItem} from '@mui/material';
-import MenuIcon from '@mui/icons-material/Menu';
-import { Link } from 'react-router-dom';
+import {
+  AppBar,
+  Box,
+  Toolbar,
+  IconButton,
+  Typography,
+  Menu,
+  Container,
+  Avatar,
+  Button,
+  Tooltip,
+  MenuItem,
+} from "@mui/material";
+import MenuIcon from "@mui/icons-material/Menu";
+import { Link } from "react-router-dom";
 
-import NbaLogo  from '../NbaLogo'
+import NbaLogo from "../NbaLogo";
 
 const pages = [
-  {text: 'Home', url: '/'},
-  {text: 'Players', url: '/players'},
-  {text: 'Teams', url: '/teams'},
-  {text: 'Newsletter', url: '/newsletter'},
-]
+  { text: "Home", url: "/" },
+  { text: "Players", url: "/players" },
+  { text: "Teams", url: "/teams" },
+  { text: "Newsletter", url: "/newsletter" },
+];
 
-const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
+const settings = ["Profile", "Account", "Dashboard", "Logout"];
 
 const NavBar = () => {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
@@ -34,17 +46,11 @@ const NavBar = () => {
     setAnchorElUser(null);
   };
 
- 
-
   return (
-    <AppBar 
-    position="static" 
-    color="primary"
-    sx={{height: 100}}
-    >
+    <AppBar position="static" color="primary" sx={{ height: 100 }}>
       <Container maxWidth="xlg">
         <Toolbar disableGutters>
-          <NbaLogo  />
+          <NbaLogo />
           <Typography
             variant="h6"
             color="primary"
@@ -53,18 +59,16 @@ const NavBar = () => {
             href="/"
             sx={{
               mr: 2,
-              display: { xs: 'none', md: 'flex' },
-              fontFamily: 'monospace',
+              display: { xs: "none", md: "flex" },
+              fontFamily: "monospace",
               fontWeight: 700,
-              letterSpacing: '.3rem',
-              color: 'inherit',
-              textDecoration: 'none',
+              letterSpacing: ".3rem",
+              color: "inherit",
+              textDecoration: "none",
             }}
-          >
-            
-          </Typography>
+          ></Typography>
 
-          <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
+          <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
             <IconButton
               size="large"
               aria-label="account of current user"
@@ -79,41 +83,42 @@ const NavBar = () => {
               id="menu-appbar"
               anchorEl={anchorElNav}
               anchorOrigin={{
-                vertical: 'bottom',
-                horizontal: 'left',
+                vertical: "bottom",
+                horizontal: "left",
               }}
               keepMounted
               transformOrigin={{
-                vertical: 'top',
-                horizontal: 'left',
+                vertical: "top",
+                horizontal: "left",
               }}
               open={Boolean(anchorElNav)}
               onClose={handleCloseNavMenu}
               sx={{
-                display: { xs: 'block', md: 'none' },
+                display: { xs: "block", md: "none" },
               }}
             >
               {pages.map((page, index) => (
                 <MenuItem key={index} onClick={handleCloseNavMenu}>
                   <Typography textAlign="center">
-                  <Link to={page.url}>{page.text}</Link>
+                    <Link to={page.url}>{page.text}</Link>
                   </Typography>
                 </MenuItem>
-              ))}             
-            
+              ))}
             </Menu>
-          </Box>          
-          <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
+          </Box>
+          <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
             {pages.map((page) => (
               <Button
                 key={page}
                 onClick={handleCloseNavMenu}
-                sx={{ my: 2, color: 'white', display: 'block'}}                                
+                sx={{ my: 2, color: "white", display: "block" }}
               >
-                <Link 
-                to={page.url}
-                style={{ color: 'inherit', textDecoration: 'inherit'}}                
-                >{page.text}</Link>
+                <Link
+                  to={page.url}
+                  style={{ color: "inherit", textDecoration: "inherit" }}
+                >
+                  {page.text}
+                </Link>
               </Button>
             ))}
           </Box>
@@ -125,17 +130,17 @@ const NavBar = () => {
               </IconButton>
             </Tooltip>
             <Menu
-              sx={{ mt: '45px' }}
+              sx={{ mt: "45px" }}
               id="menu-appbar"
               anchorEl={anchorElUser}
               anchorOrigin={{
-                vertical: 'top',
-                horizontal: 'right',
+                vertical: "top",
+                horizontal: "right",
               }}
               keepMounted
               transformOrigin={{
-                vertical: 'top',
-                horizontal: 'right',
+                vertical: "top",
+                horizontal: "right",
               }}
               open={Boolean(anchorElUser)}
               onClose={handleCloseUserMenu}
@@ -145,12 +150,11 @@ const NavBar = () => {
                   <Typography textAlign="center">{setting}</Typography>
                 </MenuItem>
               ))}
-
             </Menu>
           </Box>
         </Toolbar>
       </Container>
     </AppBar>
   );
-}
+};
 export default NavBar;
