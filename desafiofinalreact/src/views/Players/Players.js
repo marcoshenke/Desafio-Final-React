@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { NavBar, FooterPag } from "components";
 import {
   Box,
@@ -12,31 +12,32 @@ import {
 import api from "../../service/api";
 import { useForm } from "react-hook-form";
 
+
 const Players = () => {
-  const [namePlayer, setnamePlayer] = useState();
-  const [responseData, setResponseData] = useState(null);
+  const [playerName, setPlayerName] = useState([]);
+  const [isLoading, setIsLoading] = useState(false)
 
-  const inputChange = (event) => {
-    setInputValue(event.target.value);
-  };
-
-  const Submit = async (event) => {
-    event.preventDefault();
-
-  try {
-       const response = await api.get(`/players?search=${nomeDoJogador}`)
-       setResponseData(response?.data);
-  } catch (error) {
-    console.error('Erro ao buscar dados da API:', error);
-  }    
+  const getPlayer = async (playerName) => {
+    
+    const players = await api.get('/players', {params: {search: playerName }} )
+    
+    console.log(players.data.data)
+    setPlayerName(players.data.data)  
   }
 
-  const { register, handleSubmit } = useForm();
-  const onSubmit = (data) => console.log(data);
+  const {
+    register,
+    handleSubmit,
+    watch,
+    formState: { errors },
+  } = useForm();
 
-  getPlayer = (event) => {
-    setInputValue(event.target.value);
-  };
+  const onSubmit = (data) => {
+    setIsLoading(true)
+    getPlayer(data.playerName)
+    setIsLoading(false)
+  }  
+
 
   return (
     <Box
@@ -50,24 +51,18 @@ const Players = () => {
     >
       <NavBar />
       <Box>
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit(onSubmit)}>
           <label>Digite o nome de um jogador para encontrar seus dados</label>
-          <input type="text" value={namePlayer} onChange={inputChange} />
-          <input type="submit" />
+          <input {...register("playerName")} type="text" onChange={(event) => {setPlayerName(event.target.value)}} />
+          <input type="submit" value="Procurar" />
         </form>
       </Box>
-      <TableContainer>
-        <Table>
-          <TableHead>
-            <TableRow>
-              <TableCell>Nome</TableCell>
-              <TableCell>Sobronome</TableCell>
-              <TableCell>Altura</TableCell>
-              <TableCell>Time</TableCell>
-            </TableRow>
-          </TableHead>
-        </Table>
-      </TableContainer>
+       <Box>
+        {isLoading? <h1>estamos buscando a informação</h1>:<h1>Carregou</h1>}       
+       </Box>
+       
+     
+      
       <FooterPag />
     </Box>
   );
