@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState, useEffect } from "react";
 import { NavBar, FooterPag } from "components";
 import {
   Box,
@@ -12,33 +12,25 @@ import {
 import api from "../../service/api";
 import { useForm } from "react-hook-form";
 
-
 const Players = () => {
   const [playersInfos, setPlayersInfos] = useState([]);
-  const [isLoading, setIsLoading] = useState(true)
 
+  
   const getPlayer = async (playerName) => {
-    
-    const players = await api.get('/players', {params: {search: playerName }} )
-    
-    console.log(players.data.data)
-    setPlayersInfos(players.data.data)  
-  }
+    const players = await api.get("/players", {
+      params: { search: playerName },
+    });
 
-  const {
-    register,
-    handleSubmit,
-    watch,
-    formState: { errors },
-  } = useForm();
+    console.log(players.data.data);
+    setPlayersInfos(players.data.data);
+  };
+
+  const { register, handleSubmit } = useForm();
 
   const onSubmit = (data) => {
-    setIsLoading(true)
-    getPlayer(data.playerName)
-    setIsLoading(false)
-    console.log(data)
-  }  
-
+    getPlayer(data.playerName);
+    console.log(data);
+  };
 
   return (
     <Box
@@ -60,15 +52,10 @@ const Players = () => {
       </Box>
       <Box>
         {playersInfos?.map((playerInfo) => (
-          
-          <p>{playerInfo?.first_name}</p>
-        ))
-        }
+          <p>{playerInfo?.first_name} {playerInfo?.last_name}</p>
+        ))}
       </Box>
-      
-       
-     
-      
+
       <FooterPag />
     </Box>
   );
