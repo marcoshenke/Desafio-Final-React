@@ -14,15 +14,15 @@ import { useForm } from "react-hook-form";
 
 
 const Players = () => {
-  const [playerName, setPlayerName] = useState([]);
-  const [isLoading, setIsLoading] = useState(false)
+  const [playersInfos, setPlayersInfos] = useState([]);
+  const [isLoading, setIsLoading] = useState(true)
 
   const getPlayer = async (playerName) => {
     
     const players = await api.get('/players', {params: {search: playerName }} )
     
     console.log(players.data.data)
-    setPlayerName(players.data.data)  
+    setPlayersInfos(players.data.data)  
   }
 
   const {
@@ -36,6 +36,7 @@ const Players = () => {
     setIsLoading(true)
     getPlayer(data.playerName)
     setIsLoading(false)
+    console.log(data)
   }  
 
 
@@ -53,13 +54,18 @@ const Players = () => {
       <Box>
         <form onSubmit={handleSubmit(onSubmit)}>
           <label>Digite o nome de um jogador para encontrar seus dados</label>
-          <input {...register("playerName")} type="text" onChange={(event) => {setPlayerName(event.target.value)}} />
+          <input {...register("playerName")} type="text" />
           <input type="submit" value="Procurar" />
         </form>
       </Box>
-       <Box>
-        {isLoading? <h1>estamos buscando a informação</h1>:<h1>Carregou</h1>}       
-       </Box>
+      <Box>
+        {playersInfos?.map((playerInfo) => (
+          
+          <p>{playerInfo?.first_name}</p>
+        ))
+        }
+      </Box>
+      
        
      
       
