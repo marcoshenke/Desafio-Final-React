@@ -8,9 +8,11 @@ import {
   TableContainer,
   TableHead,
   TableRow,
+  TextField,
+  Button,
 } from "@mui/material";
 import api from "../../service/api";
-import { useForm } from "react-hook-form";
+import { useForm, Controller } from "react-hook-form";
 
 const Players = () => {
   const [playersInfos, setPlayersInfos] = useState([]);
@@ -27,12 +29,11 @@ const Players = () => {
   };
 
   useEffect(() => {
-    getPlayer()
-  }, [])
+    getPlayer();
+  }, []);
 
   const onSubmit = (data) => {
     getPlayer(data.playerName);
-    console.log(data);
   };
 
   return (
@@ -43,17 +44,27 @@ const Players = () => {
         display: "flex",
         flexDirection: "column",
         justifyContent: "space-between",
+        
       }}
     >
       <NavBar />
-      <Box>
-        <form onSubmit={handleSubmit(onSubmit)}>
+      <Box
+      sx={{alignSelf: "center"}}
+      >
+        <form
+          onSubmit={handleSubmit(onSubmit)}
+          style={{ display: "flex", flexDirection: "column" }}
+        >
           <label>Digite o nome de um jogador para encontrar seus dados</label>
-          <input {...register("playerName")} type="text" />
-          <input type="submit" value="Procurar" />
+          <Box>
+            <TextField {...register("playerName")} type="text" />
+            <Button type="submit">Procurar</Button>
+          </Box>
         </form>
       </Box>
-      <Box>
+      <Box
+       sx={{alignSelf: "center"}}
+      >
         <p>{status}</p>
         {playersInfos?.map((playerInfo) => (
           <p>
