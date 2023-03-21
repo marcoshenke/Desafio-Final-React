@@ -14,18 +14,17 @@ import { useForm } from "react-hook-form";
 
 const Players = () => {
   const [playersInfos, setPlayersInfos] = useState([]);
+  const [status, setStatus] = useState("");
+  const { register, handleSubmit } = useForm();
 
-  
   const getPlayer = async (playerName) => {
+    setStatus("Carregando...");
     const players = await api.get("/players", {
       params: { search: playerName },
     });
-
-    console.log(players.data.data);
     setPlayersInfos(players.data.data);
+    setStatus("");
   };
-
-  const { register, handleSubmit } = useForm();
 
   const onSubmit = (data) => {
     getPlayer(data.playerName);
@@ -51,8 +50,11 @@ const Players = () => {
         </form>
       </Box>
       <Box>
+        <p>{status}</p>
         {playersInfos?.map((playerInfo) => (
-          <p>{playerInfo?.first_name} {playerInfo?.last_name}</p>
+          <p>
+            {playerInfo?.first_name} {playerInfo?.last_name}
+          </p>
         ))}
       </Box>
 
