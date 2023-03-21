@@ -2,8 +2,6 @@ import React, { useEffect, useState } from "react";
 import { NavBar, FooterPag } from "components";
 import {
   Box,
-  FormLabel,
-  Button,
   Table,
   TableBody,
   TableCell,
@@ -15,10 +13,13 @@ import api from "../../service/api";
 
 const Teams = () => {
   const [teams, setTeams] = useState([]);
+  const [loading, setLoading] = useState('')
 
   useEffect(() => {
     const getTeams = async () => {
+      setLoading('Carregando...')
       const teams = await api.get("/teams", { params: { per_page: 30 } });
+      setLoading('')
       console.log(teams.data.data);
       setTeams(teams.data.data);
     };
@@ -43,19 +44,20 @@ const Teams = () => {
           <Table>
             <TableHead>
               <TableRow>
-                <TableCell align="right">Nome</TableCell>
-                <TableCell align="right">Cidade</TableCell>
-                <TableCell align="right">Conferência</TableCell>
-                <TableCell align="right">Abreviação</TableCell>
+                <TableCell align="center">Nome</TableCell>
+                <TableCell align="center">Cidade</TableCell>
+                <TableCell align="center">Conferência</TableCell>
+                <TableCell align="center">Abreviação</TableCell>
               </TableRow>
             </TableHead>
+            <h1> {loading} </h1>
             <TableBody>
               {teams?.map((team) => (
                 <TableRow>
-                  <TableCell>{teams?.full_name}</TableCell>
-                  <TableCell>{teams?.city}</TableCell>
-                  <TableCell>{teams?.conference}</TableCell>
-                  <TableCell>{teams?.abbreviation}</TableCell>
+                  <TableCell align="center">{team?.full_name}</TableCell>
+                  <TableCell align="center">{team?.city}</TableCell>
+                  <TableCell align="center">{team?.conference}</TableCell>
+                  <TableCell align="center">{team?.abbreviation}</TableCell>
                 </TableRow>
               ))}
             </TableBody>

@@ -26,6 +26,10 @@ const Players = () => {
     setStatus("");
   };
 
+  useEffect(() => {
+    getPlayer()
+  }, [])
+
   const onSubmit = (data) => {
     getPlayer(data.playerName);
     console.log(data);
