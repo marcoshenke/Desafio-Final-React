@@ -21,18 +21,30 @@ const FormNewsLetter = () => {
   };
 
   return (
-    <Box mt={2}>
-      <form onSubmit={handleSubmit(onSubmit)}>
+    <Box mt={2}  >
+      <form onSubmit={handleSubmit(onSubmit)} style={{display: 'flex', flexDirection: 'column', gap: '1rem', alignItems: 'center'}} >
         <Controller
           render={({ field }) => (
             <TextField
               {...field}
               label="Nome"
               error={!!errors?.name}
-              helperText={errors?.name?.message}             
+              helperText={errors?.name?.message}
+              sx={{width: '50%'}}    
             />                 
           )}
           name="name"
+          control={control}
+        />
+        <Controller
+          render={({ field }) => (
+            <TextField
+              {...field}
+              label="Qual time torce?"
+              sx={{width: '50%'}}              
+            />                 
+          )}
+          name="team"
           control={control}
         />
          <Controller
@@ -41,7 +53,8 @@ const FormNewsLetter = () => {
               {...field}
               label="E-mail"
               error={!!errors?.email}
-              helperText={errors?.email?.message}             
+              helperText={errors?.email?.message}
+              sx={{width: '50%'}}              
             />                 
           )}
           name="email"
