@@ -30,13 +30,27 @@ const FormNewsLetter = () => {
               label="Nome"
               error={!!errors?.name}
               helperText={errors?.name?.message}             
-            />
+            />                 
           )}
           name="name"
           control={control}
         />
+         <Controller
+          render={({ field }) => (
+            <TextField
+              {...field}
+              label="E-mail"
+              error={!!errors?.email}
+              helperText={errors?.email?.message}             
+            />                 
+          )}
+          name="email"
+          control={control}
+        />
+        
+          
         <Box pt={2}>
-          <Button type="submit">Enviar</Button>
+          <Button type="submit">Cadastre-se</Button>
         </Box>
       </form>
     </Box>
