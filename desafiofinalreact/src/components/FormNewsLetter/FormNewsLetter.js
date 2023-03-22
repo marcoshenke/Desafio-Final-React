@@ -1,14 +1,30 @@
-import { useForm, Controller } from "react-hook-form";
-import { Button, TextField, Box, FormLabel, Select, FormControlLabel } from "@mui/material";
-import { yupResolver } from "@hookform/resolvers/yup";
-
-import schema from "./schema";
 import { useState } from "react";
+import { useForm, Controller } from "react-hook-form";
+import {
+  Button,
+  TextField,
+  Box,
+  FormLabel,
+  FormControlLabel,
+  Dialog,
+  DialogActions,
+  DialogContent,
+  DialogContentText,
+  DialogTitle,
+} from "@mui/material";
+import * as React from "react";
 import { RadioGroup, Radio } from "@material-ui/core";
 
+import { yupResolver } from "@hookform/resolvers/yup";
+import schema from "./schema";
 
 const FormNewsLetter = () => {
-  const [infos, setInfos] = useState({ name: "", team: "", email: ""});
+  const [infos, setInfos] = useState({
+    name: "",
+    team: "",
+    email: "",
+    theGoat: "",
+  });
 
   const {
     handleSubmit,
@@ -19,12 +35,23 @@ const FormNewsLetter = () => {
     defaultValues: {
       name: "",
       team: "",
-      email: "",          
+      email: "",
+      theGoat: "",
     },
   });
 
   const onSubmit = (data) => {
     setInfos(data);
+  };
+
+  const [open, setOpen] = React.useState(false);
+
+  const handleClickOpen = () => {
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
   };
 
   return (
@@ -68,34 +95,52 @@ const FormNewsLetter = () => {
             />
           )}
         />
-
-        <FormLabel>Quem para você é o melhor jogador?</FormLabel>        
+        <FormLabel>Quem para você é o melhor jogador?</FormLabel>
         <Controller
           render={({ field }) => (
-            <RadioGroup name="theGoat" {...field}>
+            <RadioGroup {...field}>
               <FormControlLabel
                 value="Michael Jordan"
                 control={<Radio />}
                 label="Michael Jordan"
               />
-              <FormControlLabel 
-              value="Lebron James" 
-              control={<Radio />} 
-              label="Lebron James" />
+              <FormControlLabel
+                value="Lebron James"
+                control={<Radio />}
+                label="Lebron James"
+              />
             </RadioGroup>
           )}
-          name="RadioGroup"
+          name="theGoat"
           control={control}
         />
         <Box pt={2}>
-          <Button type="submit">Cadastre-se</Button>
+          <Button variant="outlined" onClick={handleClickOpen} type="submit">
+            Open alert dialog
+          </Button>
+          <Dialog
+            open={open}
+            onClose={handleClose}
+            aria-labelledby="alert-dialog-title"
+            aria-describedby="alert-dialog-description"
+          >
+            <DialogTitle id="alert-dialog-title">
+              {"Cadastrado com sucesso!"}
+            </DialogTitle>
+            <DialogContent>
+              <DialogContentText id="alert-dialog-description">
+               <Box>
+               {infos.name}, torcedor do {infos.team}, verique seu e-mail {infos.email},  lá enviaremos notícias sobre a NBA e talvez sobre o seu GOAT escolhido, que foi o {infos.theGoat}!
+               </Box>
+              </DialogContentText>
+            </DialogContent>
+            <DialogActions>
+              <Button onClick={handleClose}>Fechar</Button>
+            </DialogActions>
+          </Dialog>
         </Box>
       </form>
-      <Box>
-        <h1>{infos.name}</h1>
-        <h1>{infos.team}</h1>
-        <h1>{infos.email}</h1>       
-      </Box>
+      <Box></Box>
     </Box>
   );
 };
