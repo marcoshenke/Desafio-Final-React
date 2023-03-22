@@ -17,6 +17,7 @@ import { RadioGroup, Radio } from "@material-ui/core";
 
 import { yupResolver } from "@hookform/resolvers/yup";
 import schema from "./schema";
+import helpers from "helpers";
 
 const FormNewsLetter = () => {
   const [infos, setInfos] = useState({
@@ -53,6 +54,8 @@ const FormNewsLetter = () => {
   const handleClose = () => {
     setOpen(false);
   };
+
+  
 
   return (
     <Box mt={2}>
@@ -130,7 +133,7 @@ const FormNewsLetter = () => {
             <DialogContent>
               <DialogContentText id="alert-dialog-description">
                <Box>
-               {infos.name}, torcedor do {infos.team}, verique seu e-mail {infos.email},  lá enviaremos notícias sobre a NBA e talvez sobre o seu GOAT escolhido, que foi o {infos.theGoat}!
+               {helpers.upperCase(infos.name)}, torcedor do {helpers.upperCase(infos.team)}, fique de olho no seu e-mail {helpers.upperCase(infos.email)},  lá enviaremos notícias sobre a NBA e talvez sobre o seu GOAT escolhido, que foi o {helpers.upperCase(infos.theGoat)}!
                </Box>
               </DialogContentText>
             </DialogContent>
