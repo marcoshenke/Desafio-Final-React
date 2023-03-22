@@ -1,31 +1,30 @@
 import { useForm, Controller } from "react-hook-form";
-import {
-  Button,
-  TextField,
-  Box,
-  RadioGroup,
-  FormControlLabel,
-  FormLabel,
-  Radio,
-} from "@mui/material";
+import { Button, TextField, Box, FormLabel, Select, FormControlLabel } from "@mui/material";
 import { yupResolver } from "@hookform/resolvers/yup";
 
 import schema from "./schema";
 import { useState } from "react";
+import { RadioGroup, Radio } from "@material-ui/core";
+
 
 const FormNewsLetter = () => {
+  const [infos, setInfos] = useState({ name: "", team: "", email: ""});
+
   const {
     handleSubmit,
     control,
     formState: { errors },
-    register,
   } = useForm({
     resolver: yupResolver(schema),
-    defaultValues: {},
+    defaultValues: {
+      name: "",
+      team: "",
+      email: "",          
+    },
   });
 
   const onSubmit = (data) => {
-    console.log(data);
+    setInfos(data);
   };
 
   return (
@@ -39,77 +38,64 @@ const FormNewsLetter = () => {
           alignItems: "center",
         }}
       >
+        <FormLabel>Se Cadastre em nossa newsletter sobre NBA</FormLabel>
         <Controller
+          name="name"
+          control={control}
           render={({ field }) => (
             <TextField
               {...field}
-              label="Nome"
-              error={!!errors?.name}
-              helperText={errors?.name?.message}
-              sx={{ width: "40%" }}
-              {...register("Name")}
-              name="Name"
+              label="Seu nome"
+              error={!!errors.name}
+              helperText={errors.name?.message}
             />
           )}
-          name="Name"
-          control={control}
         />
         <Controller
+          name="team"
+          control={control}
+          render={({ field }) => <TextField {...field} label="Seu time" />}
+        />
+        <Controller
+          name="email"
+          control={control}
           render={({ field }) => (
             <TextField
               {...field}
-              label="Qual time torce?"
-              sx={{ width: "40%" }}
-              {...register("Team")}
-              name="Team"
+              label="Seu e-mail"
+              error={!!errors.email}
+              helperText={errors.email?.message}
             />
           )}
-          name="Team"
-          control={control}
         />
-        <Controller
-          render={({ field }) => (
-            <TextField
-              {...field}
-              label="E-mail"
-              error={!!errors?.email}
-              helperText={errors?.email?.message}
-              sx={{ width: "40%" }}
-              {...register("E-mail")}
-              name="E-mail"
-            />
-          )}
-          name="E-mail"
-          control={control}
-        />
-        <Box>
-          <FormLabel id="theGOAT">
-            Para você quem é o melhor de todos os tempos?
-          </FormLabel>
-          <Controller
-            render={({ field }) => (
-              <RadioGroup aria-label="theGOAT" {...field}>
-                <FormControlLabel
-                  value="michaeljordan"
-                  control={<Radio />}
-                  label="Michael Jordan"
-                />
-                <FormControlLabel
-                  value="lebronjames"
-                  control={<Radio />}
-                  label="Lebron James"
-                />
-              </RadioGroup>
-            )}
-            name="RadioGroup"
-            control={control}
-          />
-        </Box>
 
+        <FormLabel>Quem para você é o melhor jogador?</FormLabel>        
+        <Controller
+          render={({ field }) => (
+            <RadioGroup name="theGoat" {...field}>
+              <FormControlLabel
+                value="Michael Jordan"
+                control={<Radio />}
+                label="Michael Jordan"
+              />
+              <FormControlLabel 
+              value="Lebron James" 
+              control={<Radio />} 
+              label="Lebron James" />
+            </RadioGroup>
+          )}
+          name="RadioGroup"
+          control={control}
+        />
         <Box pt={2}>
           <Button type="submit">Cadastre-se</Button>
         </Box>
       </form>
+      <Box>
+        <h1>{infos.name}</h1>
+        <h1>{infos.team}</h1>
+        <h1>{infos.email}</h1>       
+      </Box>
     </Box>
   );
 };
