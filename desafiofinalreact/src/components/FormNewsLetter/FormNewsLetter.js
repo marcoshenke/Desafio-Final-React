@@ -3,10 +3,9 @@ import {
   Button,
   TextField,
   Box,
-  FormControl,
-  FormLabel,
   RadioGroup,
   FormControlLabel,
+  FormLabel,
   Radio,
 } from "@mui/material";
 import { yupResolver } from "@hookform/resolvers/yup";
@@ -24,12 +23,6 @@ const FormNewsLetter = () => {
     resolver: yupResolver(schema),
     defaultValues: {},
   });
-
-  const [value, setValue] = useState("");
-
-  const handleChange = (event) => {
-    setValue(event.target.value);
-  };
 
   const onSubmit = (data) => {
     console.log(data);
@@ -55,9 +48,10 @@ const FormNewsLetter = () => {
               helperText={errors?.name?.message}
               sx={{ width: "40%" }}
               {...register("Name")}
+              name="Name"
             />
           )}
-          name="name"
+          name="Name"
           control={control}
         />
         <Controller
@@ -67,9 +61,10 @@ const FormNewsLetter = () => {
               label="Qual time torce?"
               sx={{ width: "40%" }}
               {...register("Team")}
+              name="Team"
             />
           )}
-          name="team"
+          name="Team"
           control={control}
         />
         <Controller
@@ -81,28 +76,35 @@ const FormNewsLetter = () => {
               helperText={errors?.email?.message}
               sx={{ width: "40%" }}
               {...register("E-mail")}
+              name="E-mail"
             />
           )}
-          name="email"
+          name="E-mail"
           control={control}
         />
-
-        <FormControl>
-          <FormLabel id="demo-controlled-radio-buttons-group">Quem para você é o maior de todos os tempos?</FormLabel>
-          <RadioGroup
-            aria-labelledby="demo-controlled-radio-buttons-group"
-            name="controlled-radio-buttons-group"
-            value={value}
-            onChange={handleChange}
-          >
-            <FormControlLabel
-              value="michaelJordan"
-              control={<Radio />}
-              label="Michael Jordan"
-            />
-            <FormControlLabel value="lebronJames" control={<Radio />} label="Lebron James" />
-          </RadioGroup>
-        </FormControl>
+        <Box>
+          <FormLabel id="theGOAT">
+            Para você quem é o melhor de todos os tempos?
+          </FormLabel>
+          <Controller
+            render={({ field }) => (
+              <RadioGroup aria-label="theGOAT" {...field}>
+                <FormControlLabel
+                  value="michaeljordan"
+                  control={<Radio />}
+                  label="Michael Jordan"
+                />
+                <FormControlLabel
+                  value="lebronjames"
+                  control={<Radio />}
+                  label="Lebron James"
+                />
+              </RadioGroup>
+            )}
+            name="RadioGroup"
+            control={control}
+          />
+        </Box>
 
         <Box pt={2}>
           <Button type="submit">Cadastre-se</Button>

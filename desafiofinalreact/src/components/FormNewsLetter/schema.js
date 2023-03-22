@@ -1,8 +1,8 @@
 import * as yup from 'yup'
 
 const schema = yup.object({
-  name: yup.string().required('Campo obrigatório'),
-  email: yup.string().required('Campo x')
+  Name: yup.string().required('Campo obrigatório'),
+  Email: yup.string().email().required('Campo obrigatório')
 })
 
 export default schema
