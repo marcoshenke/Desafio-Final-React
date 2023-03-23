@@ -96,6 +96,7 @@ const Players = () => {
                 <TableCell align="center">
                   Ultimo time em que jogou / Atualmente joga
                 </TableCell>
+                <TableCell align="center">Editar</TableCell>
               </TableRow>
             </TableHead>
             <TableBody>
@@ -118,6 +119,11 @@ const Players = () => {
                   <TableCell align="center">
                     {playerInfo?.team.full_name}
                   </TableCell>
+                  <TableCell align="center">
+                    <Button>
+                    Editar
+                    </Button>
+                    </TableCell>
                 </TableRow>
               ))}
             </TableBody>

@@ -18,4 +18,8 @@ Para realizar o desafio, escolha uma API no link :https://github.com/public-apis
 
 A criação do design da aplicação é de livre escolha, contando que seja feita a utilização do Material UI e seja apresentável.
 
-Usando a API https://www.balldontlie.io/home.html#introduction
+
+# API Escolhida
+https://www.balldontlie.io/home.html#introduction
+
+API que traz algumas informações sobre jogadores, times, jogos e temporadas da NBA
