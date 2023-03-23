@@ -12,6 +12,7 @@ import {
   Button,
   Typography,
   FormLabel,
+  Grid
 } from "@mui/material";
 import api from "../../service/api";
 import { useForm } from "react-hook-form";
@@ -77,7 +78,12 @@ const Players = () => {
           </Box>
         </form>
       </Box>
-      <Box sx={{ alignSelf: "center" }} my="1rem">
+      <Grid
+      container 
+      >
+      <Grid
+      item xs={12}
+       sx={{ alignSelf: "center" }} my="1rem">
         <p>{status}</p>
         <TableContainer>
           <Table >
@@ -117,7 +123,9 @@ const Players = () => {
             </TableBody>
           </Table>
         </TableContainer>
-      </Box>
+      </Grid>
+      </Grid>
+     
 
       <FooterPag />
     </Box>

@@ -21,7 +21,7 @@ function NavBar() {
         <Box
        
         >
-          <Typography variant='h6'>Entre em contato conosco: nbanews@nbanews.com</Typography>
+          <Typography variant='h6'>Entre em contato: nbanews@nbanews.com</Typography>
         </Box>
         
       </Container>

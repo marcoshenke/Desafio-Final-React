@@ -17,7 +17,7 @@ import MenuIcon from "@mui/icons-material/Menu";
 import { Link } from "react-router-dom";
 
 import NbaLogo from "../NbaLogo";
-import eu from "../../images/markim.png" 
+import eu from "../../images/markim.png";
 
 const pages = [
   { text: "Home", url: "/" },
@@ -52,7 +52,6 @@ const NavBar = () => {
       <Container maxWidth="xlg">
         <Toolbar disableGutters>
           <NbaLogo />
-   
 
           <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
             <IconButton
@@ -86,7 +85,11 @@ const NavBar = () => {
               {pages.map((page, index) => (
                 <MenuItem key={index} onClick={handleCloseNavMenu}>
                   <Typography textAlign="center">
-                    <Link to={page.url}>{page.text}</Link>
+                    <Link 
+                    to={page.url}
+                    style={{ color: "inherit", textDecoration: "inherit" }}
+                    >{page.text}
+                    </Link>
                   </Typography>
                 </MenuItem>
               ))}
@@ -99,17 +102,14 @@ const NavBar = () => {
                 onClick={handleCloseNavMenu}
                 sx={{ my: 2, color: "white", display: "block" }}
               >
-                <Typography
-                variant="h6"
-                >
-                <Link
-                  to={page.url}
-                  style={{ color: "inherit", textDecoration: "inherit" }}
-                >
-                  {page.text}
-                </Link>
+                <Typography variant="h6">
+                  <Link
+                    to={page.url}
+                    style={{ color: "inherit", textDecoration: "inherit" }}
+                  >
+                    {page.text}
+                  </Link>
                 </Typography>
-                
               </Button>
             ))}
           </Box>
@@ -117,7 +117,7 @@ const NavBar = () => {
           <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Open settings">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                <Avatar alt="Minha foto" src={eu}/>
+                <Avatar alt="Minha foto" src={eu} />
               </IconButton>
             </Tooltip>
             <Menu

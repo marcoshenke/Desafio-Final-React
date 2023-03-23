@@ -11,6 +11,7 @@ import {
   DialogContent,
   DialogContentText,
   DialogTitle,
+  Typography,
 } from "@mui/material";
 import * as React from "react";
 import { RadioGroup, Radio } from "@material-ui/core";
@@ -58,17 +59,21 @@ const FormNewsLetter = () => {
   
 
   return (
-    <Box mt={2}>
+    <Box my={2} ml={'0.8rem'}>
       <form
         onSubmit={handleSubmit(onSubmit)}
         style={{
           display: "flex",
           flexDirection: "column",
-          gap: "1rem",
+          gap: "0.5rem",
           alignItems: "center",
-        }}
+        }}        
       >
-        <FormLabel>Se Cadastre em nossa newsletter sobre NBA</FormLabel>
+        <FormLabel>
+          <Typography variant="h6">
+          Se Cadastre em nossa newsletter sobre NBA
+          </Typography>
+          </FormLabel>
         <Controller
           name="name"
           control={control}
@@ -98,7 +103,7 @@ const FormNewsLetter = () => {
             />
           )}
         />
-        <FormLabel>Quem para você é o melhor jogador?</FormLabel>
+        <FormLabel sx={{fontWeight: 'bold'}}>Quem para você é o melhor jogador?</FormLabel>
         <Controller
           render={({ field }) => (
             <RadioGroup {...field}>
@@ -117,7 +122,7 @@ const FormNewsLetter = () => {
           name="theGoat"
           control={control}
         />
-        <Box pt={2}>
+        <Box pt={'0.2rem'}>
           <Button variant="outlined" onClick={handleClickOpen} type="submit">
             Cadastrar
           </Button>
@@ -138,12 +143,12 @@ const FormNewsLetter = () => {
               </DialogContentText>
             </DialogContent>
             <DialogActions>
-              <Button onClick={handleClose}>Fechar</Button>
+              <Button onClick={handleClose} >Fechar</Button>
             </DialogActions>
           </Dialog>
         </Box>
       </form>
-      <Box></Box>
+      
     </Box>
   );
 };
