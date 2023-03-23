@@ -17,6 +17,7 @@ import MenuIcon from "@mui/icons-material/Menu";
 import { Link } from "react-router-dom";
 
 import NbaLogo from "../NbaLogo";
+import eu from "../../images/markim.png" 
 
 const pages = [
   { text: "Home", url: "/" },
@@ -116,7 +117,7 @@ const NavBar = () => {
           <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Open settings">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                <Avatar alt="Minha foto" src="/static/images/avatar/2.jpg" />
+                <Avatar alt="Minha foto" src={eu}/>
               </IconButton>
             </Tooltip>
             <Menu

@@ -10,6 +10,7 @@ let theme = createTheme({
       main: '#D30529',
     },
   },
+  
 });
 
 theme = responsiveFontSizes(theme)

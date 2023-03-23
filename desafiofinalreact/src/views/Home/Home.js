@@ -16,8 +16,9 @@ const Home = () => {
             flexDirection: 'column',
             justifyContent: 'space-between',
             backgroundImage: `url(${nba})`,
-            backgroundPositionX: "-8rem",
-            backgroundRepeat: "no-repeat"
+            backgroundRepeat: "no-repeat",
+            backgroundSize: {sm: '100%', md: '100%', lg:'100%'},
+            backgroundPosition: {xs: '-50rem', sm: '0rem'}
         }}
         >
             <NavBar />
@@ -31,7 +32,11 @@ const Home = () => {
                <Typography 
                variant= "h2" 
                fontWeight= "bold"
-              color="midnightblue"          
+              color="secondary"
+              sx={{
+                backgroundColor: "darkblue",
+                opacity: '80%'
+              }}          
                >Bem-vindo a sua página sobre NBA!</Typography>
             </Box>
             <FooterPag />

@@ -1,9 +1,10 @@
 const feetConverter = (num) => {
-  if (!num) {
+  if (isNaN(num)) {
     return ''
   }
-  let converterNum = parseFloat(num)
-  return converterNum/3.281
+  let heightMeters = num / 3.281
+  let heightMetersFixed = heightMeters.toFixed(2)
+  return heightMetersFixed
   
 }
 

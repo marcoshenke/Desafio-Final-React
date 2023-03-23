@@ -1,6 +1,6 @@
 import React from 'react';
 
-import {AppBar, Container, Box  } from '@mui/material';
+import {AppBar, Container, Box, Typography  } from '@mui/material';
 
 
 import {theme} from '../../theme'
@@ -18,8 +18,10 @@ function NavBar() {
         <Box disableGutters>
           <NbaLogo />          
         </Box>
-        <Box>
-          <h3>Entre em contato conosco: nbanews@nbanews.com</h3>
+        <Box
+       
+        >
+          <Typography variant='h6'>Entre em contato conosco: nbanews@nbanews.com</Typography>
         </Box>
         
       </Container>

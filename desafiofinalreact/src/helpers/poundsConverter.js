@@ -2,8 +2,9 @@ const poundsConverter = (pounds) => {
   if (!pounds) {
     return ''
   }
-  let converterPounds = parseFloat(pounds)
-  return converterPounds/2.205
+    let kilos = pounds / 2.205
+  let converterFloatKilos = kilos.toFixed(2)
+  return converterFloatKilos
   
 }
 
