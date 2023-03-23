@@ -1,6 +1,6 @@
 import React from 'react';
 
-import {AppBar, Toolbar,  Container,  } from '@mui/material';
+import {AppBar, Container, Box  } from '@mui/material';
 
 
 import {theme} from '../../theme'
@@ -12,10 +12,16 @@ function NavBar() {
  
   return (
     <AppBar position="static" theme={theme} color='secondary'>
-      <Container maxWidth="xlg" >
-        <Toolbar disableGutters>
+      <Container maxWidth="xlg"
+      sx={{display: "flex", flexDirection: "row-reverse"}}
+      >
+        <Box disableGutters>
           <NbaLogo />          
-        </Toolbar>
+        </Box>
+        <Box>
+          <h3>Entre em contato conosco: nbanews@nbanews.com</h3>
+        </Box>
+        
       </Container>
     </AppBar>
   );

@@ -119,7 +119,7 @@ const FormNewsLetter = () => {
         />
         <Box pt={2}>
           <Button variant="outlined" onClick={handleClickOpen} type="submit">
-            Open alert dialog
+            Cadastrar
           </Button>
           <Dialog
             open={open}

@@ -66,11 +66,54 @@ const Players = () => {
        sx={{alignSelf: "center"}}
       >
         <p>{status}</p>
+        <TableContainer>
+          <Table>
+            <TableHead>
+              <TableRow>
+                  <TableCell>
+                      Nome
+                  </TableCell>
+                  <TableCell>
+                    Posição
+                  </TableCell>
+                  <TableCell>
+                    Altura
+                  </TableCell>
+                  <TableCell>
+                    Peso
+                  </TableCell>
+                  <TableCell>
+                    Ultimo time em que jogou
+                  </TableCell>
+              </TableRow>
+            </TableHead>
+          </Table>
+        </TableContainer>
+        <TableBody>
+          
         {playersInfos?.map((playerInfo) => (
-          <p>
+          <TableRow>
+            <TableCell>
             {playerInfo?.first_name} {playerInfo?.last_name}
-          </p>
+            </TableCell>
+            <TableCell>
+            {playerInfo?.position}
+            </TableCell>
+            <TableCell>
+              {playerInfo?.height_feet},{playerInfo?.height_inches}              
+            </TableCell>
+            <TableCell>
+              {playerInfo?.weight_pounds}
+            </TableCell>
+            <TableCell>
+              {playerInfo?.team.full_name}
+            </TableCell>
+          </TableRow>
+            
+          
         ))}
+        </TableBody>
+        
       </Box>
 
       <FooterPag />
