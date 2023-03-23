@@ -32,6 +32,7 @@ const FormNewsLetter = () => {
     handleSubmit,
     control,
     formState: { errors },
+    reset,
   } = useForm({
     resolver: yupResolver(schema),
     defaultValues: {
@@ -44,6 +45,7 @@ const FormNewsLetter = () => {
 
   const onSubmit = (data) => {
     setInfos(data);
+    reset()
   };
 
   const [open, setOpen] = React.useState(false);
