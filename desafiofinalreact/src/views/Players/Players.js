@@ -14,8 +14,7 @@ import {
   FormLabel,
 } from "@mui/material";
 import api from "../../service/api";
-import { useForm, Controller } from "react-hook-form";
-import { Form } from "react-router-dom";
+import { useForm } from "react-hook-form";
 import helpers from "helpers";
 
 const Players = () => {
@@ -61,26 +60,33 @@ const Players = () => {
           style={{ display: "flex", flexDirection: "column" }}
         >
           <FormLabel>
-            <Typography variant="h5">
-              Digite o nome de um jogador para encontrar seus dados
+            <Typography variant="h5" fontWeight="bold">
+              Digite o nome de um jogador para encontrar os dados dele
             </Typography>
           </FormLabel>
-          <Box>
-            <TextField {...register("playerName")} type="text" />
-            <Button type="submit">Procurar</Button>
+          <Box
+          sx={{
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+            gap: '0.5rem'
+          }}
+          >
+            <TextField {...register("playerName")} type="text" sx={{width: '60%'}} />
+            <Button variant="contained" type="submit" sx={{width: '40%'}}>Procurar</Button>
           </Box>
         </form>
       </Box>
       <Box sx={{ alignSelf: "center" }} my="1rem">
         <p>{status}</p>
         <TableContainer>
-          <Table sx={{ minWidth: 1000 }}>
+          <Table >
             <TableHead>
               <TableRow>
                 <TableCell align="center">Nome</TableCell>
                 <TableCell align="center">Posição</TableCell>
-                <TableCell align="center">Altura</TableCell>
-                <TableCell align="center">Peso</TableCell>
+                <TableCell align="center">Altura(metros)</TableCell>
+                <TableCell align="center">Peso(kilogramas)</TableCell>
                 <TableCell align="center">
                   Ultimo time em que jogou / Atualmente joga
                 </TableCell>
@@ -92,7 +98,9 @@ const Players = () => {
                   <TableCell align="center">
                     {playerInfo?.first_name} {playerInfo?.last_name}
                   </TableCell>
-                  <TableCell align="center">{playerInfo?.position}</TableCell>
+                  <TableCell align="center">
+                    {helpers.positionConverter(playerInfo?.position)}
+                  </TableCell>
                   <TableCell align="center">
                     {helpers.feetConverter(
                       `${playerInfo?.height_feet}.${playerInfo?.height_inches}`
