@@ -38,10 +38,12 @@ const Teams = () => {
       }}
     >
       <NavBar />
-      <Box>
+      <Box
+      sx={{alignSelf: "center"}}
+      >
         Esse são todos os times da NBA:
         <TableContainer>
-          <Table>
+          <Table sx={{ maxWidth: "400px" }}>
             <TableHead>
               <TableRow>
                 <TableCell align="center">Nome</TableCell>

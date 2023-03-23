@@ -1,5 +1,5 @@
 import React from "react"
-import {Box} from '@mui/material'
+import {Box, Typography} from '@mui/material'
 
 import {NavBar, FooterPag} from 'components'
 import nba from "../../images/nba.jpg"
@@ -11,22 +11,28 @@ const Home = () => {
         <Box 
         sx={{
             width: '100%',
-            height: '100vh',
+            minHeight: '100vh',
             display: 'flex',
             flexDirection: 'column',
             justifyContent: 'space-between',
-            
+            backgroundImage: `url(${nba})`,
+            backgroundPositionX: "-8rem",
+            backgroundRepeat: "no-repeat"
         }}
         >
             <NavBar />
             <Box
             sx={{display: 'flex',
             flexDirection: 'column',
-            alignItems: "center"
+            alignItems: "center",
+            mb: "20rem"
             }}
             >
-               <h1>Bem-vindo a sua página sobre NBA!</h1>
-               <img alt="nba" src={nba} width="70%" height="70%"></img>
+               <Typography 
+               variant= "h2" 
+               fontWeight= "bold"
+              color="midnightblue"          
+               >Bem-vindo a sua página sobre NBA!</Typography>
             </Box>
             <FooterPag />
         </Box>            

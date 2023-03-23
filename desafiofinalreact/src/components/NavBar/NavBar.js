@@ -51,22 +51,7 @@ const NavBar = () => {
       <Container maxWidth="xlg">
         <Toolbar disableGutters>
           <NbaLogo />
-          <Typography
-            variant="h6"
-            color="primary"
-            noWrap
-            component="a"
-            href="/"
-            sx={{
-              mr: 2,
-              display: { xs: "none", md: "flex" },
-              fontFamily: "monospace",
-              fontWeight: 700,
-              letterSpacing: ".3rem",
-              color: "inherit",
-              textDecoration: "none",
-            }}
-          ></Typography>
+   
 
           <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
             <IconButton
@@ -113,12 +98,17 @@ const NavBar = () => {
                 onClick={handleCloseNavMenu}
                 sx={{ my: 2, color: "white", display: "block" }}
               >
+                <Typography
+                variant="h6"
+                >
                 <Link
                   to={page.url}
                   style={{ color: "inherit", textDecoration: "inherit" }}
                 >
                   {page.text}
                 </Link>
+                </Typography>
+                
               </Button>
             ))}
           </Box>

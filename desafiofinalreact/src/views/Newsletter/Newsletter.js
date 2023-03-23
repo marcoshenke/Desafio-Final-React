@@ -1,28 +1,31 @@
-import React from "react"
-
-import {  Box } from '@mui/material'
-
-import {FooterPag, NavBar, FormNewsLetter} from 'components'
+import React from "react";
+import { NavBar, FooterPag, FormNewsLetter } from "components";
+import {
+  Box
+  
+} from "@mui/material";
 
 const Newsletter = () => {
-    return (
-        <Box
-        sx={{
-            width: "100%",
-            height: "100vh",
-            display: "flex",
-            flexDirection: "column",
-            justifyContent: "space-between",
-          }}
-        >
-            <NavBar />
+  
 
-            <FormNewsLetter/>
+  return (
+    <Box
+      sx={{
+        minWidth: "100vw",
+        height: "100vh",
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "space-between",
+        
+      }}
+    >
+      <NavBar />
+     
+      <FormNewsLetter/>
 
+      <FooterPag />
+    </Box>
+  );
+};
 
-            <FooterPag/>
-        </Box>
-    )
-}
-
-export default Newsletter
+export default Newsletter;
