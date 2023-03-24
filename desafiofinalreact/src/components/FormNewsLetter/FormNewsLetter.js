@@ -12,7 +12,8 @@ import {
   DialogContentText,
   DialogTitle,
   Typography,
-  Autocomplete
+  Select,
+  MenuItem,
 } from "@mui/material";
 import * as React from "react";
 import { RadioGroup, Radio } from "@material-ui/core";
@@ -27,7 +28,6 @@ const FormNewsLetter = () => {
   const [infos, setInfos] = useState({
     name: "",
     team: "",
-    team2: "",
     email: "",
     theGoat: "",
   });
@@ -42,7 +42,6 @@ const FormNewsLetter = () => {
     defaultValues: {
       name: "",
       team: "",
-      team2: "",
       email: "",
       theGoat: "",
     },
@@ -50,6 +49,7 @@ const FormNewsLetter = () => {
 
   const onSubmit = (data) => {
     setInfos(data);
+    console.log(data)
     reset();
   };
 
@@ -65,10 +65,9 @@ const FormNewsLetter = () => {
 
   const [allTeams, setAllTeams] = useState([]);
 
-    useEffect(() => {
-    const getTeams = async () => {      
-      const teams = await api.get("/teams", { params: { per_page: 30 } });    
-      console.log(teams.data.data);
+  useEffect(() => {
+    const getTeams = async () => {
+      const teams = await api.get("/teams", { params: { per_page: 30 } });
       setAllTeams(teams.data.data);
     };
 
@@ -76,11 +75,6 @@ const FormNewsLetter = () => {
   }, []);
 
 
-  const teams = allTeams.map(team => {
-    return {
-      label: team.full_name,      
-    };
-  });
 
   return (
     <Box my={2} ml={"0.8rem"}>
@@ -110,25 +104,19 @@ const FormNewsLetter = () => {
             />
           )}
         />
-        <Controller
-          name="team"
-          control={control}
-          render={({ field }) => <TextField {...field} label="Seu time" />}
-        />
-        <Controller
-        name='team2'
-        control={control}
-        render={({field}) => (
-          <Autocomplete
-      disablePortal
-      id="combo-box-demo"
-      options={teams}
-      sx={{ width: '18.2%' }}
-      renderInput={(params) => <TextField {...params} label="Seu time" />}
-    />
-        )
-      }
-        />
+        
+       <Controller 
+       control={control}
+       name="team"
+       default=""
+       render={({field}) => (
+        <Select {...field} >
+          {allTeams?.map((team) => (
+             <MenuItem value={`${team.full_name}`} >{team.full_name}</MenuItem>
+          ))}         
+        </Select>
+       )}
+       />
 
         <Controller
           name="email"
@@ -142,6 +130,7 @@ const FormNewsLetter = () => {
             />
           )}
         />
+
         <FormLabel sx={{ fontWeight: "bold" }}>
           Quem para você é o melhor jogador?
         </FormLabel>
@@ -183,7 +172,7 @@ const FormNewsLetter = () => {
                   {helpers.upperCase(infos.team)}, fique de olho no seu e-mail{" "}
                   {helpers.upperCase(infos.email)}, lá enviaremos notícias sobre
                   a NBA e talvez sobre o seu GOAT escolhido, que foi o{" "}
-                  {helpers.upperCase(infos.theGoat)}!{infos.team2}{""}
+                  {helpers.upperCase(infos.theGoat)}!                  
                 </Box>
               </DialogContentText>
             </DialogContent>
