@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useForm, Controller } from "react-hook-form";
 import {
   Button,
@@ -12,6 +12,7 @@ import {
   DialogContentText,
   DialogTitle,
   Typography,
+  Autocomplete
 } from "@mui/material";
 import * as React from "react";
 import { RadioGroup, Radio } from "@material-ui/core";
@@ -20,10 +21,13 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import schema from "./schema";
 import helpers from "helpers";
 
+import api from "../../service/api";
+
 const FormNewsLetter = () => {
   const [infos, setInfos] = useState({
     name: "",
     team: "",
+    team2: "",
     email: "",
     theGoat: "",
   });
@@ -38,6 +42,7 @@ const FormNewsLetter = () => {
     defaultValues: {
       name: "",
       team: "",
+      team2: "",
       email: "",
       theGoat: "",
     },
@@ -45,10 +50,10 @@ const FormNewsLetter = () => {
 
   const onSubmit = (data) => {
     setInfos(data);
-    reset()
+    reset();
   };
 
-  const [open, setOpen] = React.useState(false);
+  const [open, setOpen] = useState(false);
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -58,10 +63,27 @@ const FormNewsLetter = () => {
     setOpen(false);
   };
 
-  
+  const [allTeams, setAllTeams] = useState([]);
+
+    useEffect(() => {
+    const getTeams = async () => {      
+      const teams = await api.get("/teams", { params: { per_page: 30 } });    
+      console.log(teams.data.data);
+      setAllTeams(teams.data.data);
+    };
+
+    getTeams();
+  }, []);
+
+
+  const teams = allTeams.map(team => {
+    return {
+      label: team.full_name,      
+    };
+  });
 
   return (
-    <Box my={2} ml={'0.8rem'}>
+    <Box my={2} ml={"0.8rem"}>
       <form
         onSubmit={handleSubmit(onSubmit)}
         style={{
@@ -69,13 +91,13 @@ const FormNewsLetter = () => {
           flexDirection: "column",
           gap: "0.5rem",
           alignItems: "center",
-        }}        
+        }}
       >
         <FormLabel>
           <Typography variant="h6">
-          Se Cadastre em nossa newsletter sobre NBA
+            Se Cadastre em nossa newsletter sobre NBA
           </Typography>
-          </FormLabel>
+        </FormLabel>
         <Controller
           name="name"
           control={control}
@@ -94,6 +116,21 @@ const FormNewsLetter = () => {
           render={({ field }) => <TextField {...field} label="Seu time" />}
         />
         <Controller
+        name='team2'
+        control={control}
+        render={({field}) => (
+          <Autocomplete
+      disablePortal
+      id="combo-box-demo"
+      options={teams}
+      sx={{ width: '18.2%' }}
+      renderInput={(params) => <TextField {...params} label="Seu time" />}
+    />
+        )
+      }
+        />
+
+        <Controller
           name="email"
           control={control}
           render={({ field }) => (
@@ -105,7 +142,9 @@ const FormNewsLetter = () => {
             />
           )}
         />
-        <FormLabel sx={{fontWeight: 'bold'}}>Quem para você é o melhor jogador?</FormLabel>
+        <FormLabel sx={{ fontWeight: "bold" }}>
+          Quem para você é o melhor jogador?
+        </FormLabel>
         <Controller
           render={({ field }) => (
             <RadioGroup {...field}>
@@ -124,7 +163,7 @@ const FormNewsLetter = () => {
           name="theGoat"
           control={control}
         />
-        <Box pt={'0.2rem'}>
+        <Box pt={"0.2rem"}>
           <Button variant="outlined" onClick={handleClickOpen} type="submit">
             Cadastrar
           </Button>
@@ -139,18 +178,21 @@ const FormNewsLetter = () => {
             </DialogTitle>
             <DialogContent>
               <DialogContentText id="alert-dialog-description">
-               <Box>
-               {helpers.upperCase(infos.name)}, torcedor do {helpers.upperCase(infos.team)}, fique de olho no seu e-mail {helpers.upperCase(infos.email)},  lá enviaremos notícias sobre a NBA e talvez sobre o seu GOAT escolhido, que foi o {helpers.upperCase(infos.theGoat)}!
-               </Box>
+                <Box>
+                  {helpers.upperCase(infos.name)}, torcedor do{" "}
+                  {helpers.upperCase(infos.team)}, fique de olho no seu e-mail{" "}
+                  {helpers.upperCase(infos.email)}, lá enviaremos notícias sobre
+                  a NBA e talvez sobre o seu GOAT escolhido, que foi o{" "}
+                  {helpers.upperCase(infos.theGoat)}!{infos.team2}{""}
+                </Box>
               </DialogContentText>
             </DialogContent>
             <DialogActions>
-              <Button onClick={handleClose} >Fechar</Button>
+              <Button onClick={handleClose}>Fechar</Button>
             </DialogActions>
           </Dialog>
         </Box>
       </form>
-      
     </Box>
   );
 };
