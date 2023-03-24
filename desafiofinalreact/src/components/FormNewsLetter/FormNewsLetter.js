@@ -110,7 +110,7 @@ const FormNewsLetter = () => {
        name="team"
        default=""
        render={({field}) => (
-        <Select {...field} >
+        <Select {...field} sx={{width: '14.5rem'}}>
           {allTeams?.map((team) => (
              <MenuItem value={`${team.full_name}`} >{team.full_name}</MenuItem>
           ))}         
