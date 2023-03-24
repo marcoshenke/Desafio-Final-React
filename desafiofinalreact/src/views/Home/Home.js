@@ -4,6 +4,8 @@ import { Box, Typography } from "@mui/material";
 import { NavBar, FooterPag } from "components";
 import nba from "../../images/nba.jpg";
 
+import basketball from "../../images/basketball.png"
+
 const Home = () => {
   return (
     <Box
@@ -25,22 +27,22 @@ const Home = () => {
           display: "flex",
           flexDirection: "column",
           alignItems: "center",
-          mb: {sm: "-13rem", lg: "-20rem"},
+          mb: {xs:"-14rem", sm: "-13rem", lg: "-28rem"},
         }}
       >
         <Typography
-          variant="h2"
+          fontSize={{xs:'1.2rem', lg:'4rem'}}
           color="secondary"
           sx={{
             backgroundColor: "darkblue",
-            opacity: "88%",
             borderRadius: {xs: "1rem", lg: "5rem"},
-            width: {xs: 'none', sm: '40rem', lg: "61rem"},
+            width: {xs: 'none', sm: '40rem', lg: "65rem"},
             fontWeight: "bold",
             textAlign: "center",
           }}
         >
           Bem-vindo a sua página sobre NBA!
+          <img style={{width: '7rem'}}alt="basktball" src={basketball}/>
         </Typography>
       </Box>
       <FooterPag />
