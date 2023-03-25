@@ -1,10 +1,10 @@
 import React from "react";
 import { Box, Typography } from "@mui/material";
 
-import { NavBar, FooterPag } from "components";
+import { NavBar, FooterPag, WelcomeNba } from "components";
 import nba from "../../images/nba.jpg";
 
-import basketball from "../../images/basketball.png"
+import basketball from "../../images/basketball.png";
 
 const Home = () => {
   return (
@@ -22,29 +22,14 @@ const Home = () => {
       }}
     >
       <NavBar />
-      <Box
+      <WelcomeNba
         sx={{
           display: "flex",
           flexDirection: "column",
           alignItems: "center",
-          mb: {xs:"-14rem", sm: "-13rem", lg: "-28rem"},
+          mb: { xs: "-14rem", sm: "-13rem", lg: "-28rem" },
         }}
-      >
-        <Typography
-          fontSize={{xs:'1.2rem', lg:'4rem'}}
-          color="secondary"
-          sx={{
-            backgroundColor: "darkblue",
-            borderRadius: {xs: "1rem", lg: "5rem"},
-            width: {xs: 'none', sm: '40rem', lg: "65rem"},
-            fontWeight: "bold",
-            textAlign: "center",
-          }}
-        >
-          Bem-vindo a sua página sobre NBA!
-          <img style={{width: '7rem'}}alt="basktball" src={basketball}/>
-        </Typography>
-      </Box>
+      />
       <FooterPag />
     </Box>
   );
