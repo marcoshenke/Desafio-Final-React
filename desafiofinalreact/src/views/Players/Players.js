@@ -12,7 +12,7 @@ import {
   Button,
   Typography,
   FormLabel,
-  Grid
+  Grid,
 } from "@mui/material";
 import api from "../../service/api";
 import { useForm } from "react-hook-form";
@@ -66,72 +66,87 @@ const Players = () => {
             </Typography>
           </FormLabel>
           <Box
-          sx={{
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'center',
-            gap: '0.5rem'
-          }}
+            sx={{
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+              gap: "0.5rem",
+            }}
           >
-            <TextField {...register("playerName")} type="text" sx={{width: '60%'}} />
-            <Button variant="contained" type="submit" sx={{width: '40%'}}>Procurar</Button>
+            <TextField
+              {...register("playerName")}
+              type="text"
+              sx={{ width: "60%" }}
+            />
+            <Button
+              variant="contained"
+              type="submit"
+              sx={{ width: "40%", fontSize: "1.5rem" }}
+            >
+              Procurar
+            </Button>
           </Box>
         </form>
       </Box>
-      <Grid
-      container 
-      >
-      <Grid
-      item xs={12}
-       sx={{ alignSelf: "center" }} my="1rem">
-        <p>{status}</p>
-        <TableContainer>
-          <Table >
-            <TableHead>
-              <TableRow>
-                <TableCell align="center">Nome</TableCell>
-                <TableCell align="center">Posição</TableCell>
-                <TableCell align="center">Altura(metros)</TableCell>
-                <TableCell align="center">Peso(kilogramas)</TableCell>
-                <TableCell align="center">
-                  Ultimo time em que jogou / Atualmente joga
-                </TableCell>
-                <TableCell align="center">Editar</TableCell>
-              </TableRow>
-            </TableHead>
-            <TableBody>
-              {playersInfos?.map((playerInfo) => (
+      <Grid container>
+        <Grid item xs={12} sx={{ alignSelf: "center" }} my="1rem">
+          <p>{status}</p>
+          <TableContainer>
+            <Table>
+              <TableHead>
                 <TableRow>
-                  <TableCell align="center">
-                    {playerInfo?.first_name} {playerInfo?.last_name}
+                  <TableCell sx={{ fontSize: "1.5rem" }} align="center">
+                    Nome
                   </TableCell>
-                  <TableCell align="center">
-                    {helpers.positionConverter(playerInfo?.position)}
+                  <TableCell sx={{ fontSize: "1.5rem" }} align="center">
+                    Posição
                   </TableCell>
-                  <TableCell align="center">
-                    {helpers.feetConverter(
-                      `${playerInfo?.height_feet}.${playerInfo?.height_inches}`
-                    )}
+                  <TableCell sx={{ fontSize: "1.5rem" }} align="center">
+                    Altura(metros)
                   </TableCell>
-                  <TableCell align="center">
-                    {helpers.poundsConverter(playerInfo?.weight_pounds)}
+                  <TableCell sx={{ fontSize: "1.5rem" }} align="center">
+                    Peso(kilogramas)
                   </TableCell>
-                  <TableCell align="center">
-                    {playerInfo?.team.full_name}
+                  <TableCell sx={{ fontSize: "1.5rem" }} align="center">
+                    Ultimo time em que jogou / Atualmente joga
                   </TableCell>
-                  <TableCell align="center">
-                    <Button>
+                  <TableCell sx={{ fontSize: "1.3rem" }} align="center">
                     Editar
-                    </Button>
-                    </TableCell>
+                  </TableCell>
                 </TableRow>
-              ))}
-            </TableBody>
-          </Table>
-        </TableContainer>
+              </TableHead>
+              <TableBody>
+                {playersInfos?.map((playerInfo) => (
+                  <TableRow>
+                    <TableCell sx={{ fontSize: "1.3rem" }} align="center">
+                      {playerInfo?.first_name} {playerInfo?.last_name}
+                    </TableCell>
+                    <TableCell sx={{ fontSize: "1.3rem" }} align="center">
+                      {helpers.positionConverter(playerInfo?.position)}
+                    </TableCell>
+                    <TableCell sx={{ fontSize: "1.3rem" }} align="center">
+                      {helpers.feetConverter(
+                        `${playerInfo?.height_feet}.${playerInfo?.height_inches}`
+                      )}
+                    </TableCell>
+                    <TableCell sx={{ fontSize: "1.3rem" }} align="center">
+                      {helpers.poundsConverter(playerInfo?.weight_pounds)}
+                    </TableCell>
+                    <TableCell sx={{ fontSize: "1.3rem" }} align="center">
+                      {playerInfo?.team.full_name}
+                    </TableCell>
+                    <TableCell sx={{ fontSize: "1.3rem" }} align="center">
+                      <Button variant="outlined" sx={{ fontSize: "1.3rem" }}>
+                        Editar
+                      </Button>
+                    </TableCell>
+                  </TableRow>
+                ))}
+              </TableBody>
+            </Table>
+          </TableContainer>
+        </Grid>
       </Grid>
-      </Grid>
-     
 
       <FooterPag />
     </Box>

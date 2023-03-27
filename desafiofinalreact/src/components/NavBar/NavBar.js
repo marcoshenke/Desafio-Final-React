@@ -85,10 +85,11 @@ const NavBar = () => {
               {pages.map((page, index) => (
                 <MenuItem key={index} onClick={handleCloseNavMenu}>
                   <Typography textAlign="center">
-                    <Link 
-                    to={page.url}
-                    style={{ color: "inherit", textDecoration: "inherit" }}
-                    >{page.text}
+                    <Link
+                      to={page.url}
+                      style={{ color: "inherit", textDecoration: "inherit" }}
+                    >
+                      {page.text}
                     </Link>
                   </Typography>
                 </MenuItem>
@@ -102,7 +103,16 @@ const NavBar = () => {
                 onClick={handleCloseNavMenu}
                 sx={{ my: 2, color: "white", display: "block" }}
               >
-                <Typography variant="h6" sx={{':hover':{fontSize: '1.5rem', color: 'red', fontWeight: ''}}}>
+                <Typography
+                  variant="h6"
+                  sx={{
+                    ":hover": {
+                      fontSize: "1.5rem",
+                      color: "red",
+                      fontWeight: "",
+                    },
+                  }}
+                >
                   <Link
                     to={page.url}
                     style={{ color: "inherit", textDecoration: "inherit" }}

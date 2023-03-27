@@ -49,8 +49,11 @@ const FormNewsLetter = () => {
 
   const onSubmit = (data) => {
     setInfos(data);
-    console.log(data)
+    console.log(data);
     reset();
+    if (!!errors) {
+      handleClose()
+    }
   };
 
   const [open, setOpen] = useState(false);
@@ -73,8 +76,6 @@ const FormNewsLetter = () => {
 
     getTeams();
   }, []);
-
-
 
   return (
     <Box my={2} ml={"0.8rem"}>
@@ -104,19 +105,21 @@ const FormNewsLetter = () => {
             />
           )}
         />
-        
-       <Controller 
-       control={control}
-       name="team"
-       default=""
-       render={({field}) => (
-        <Select {...field} sx={{width: '14.5rem'}}>
-          {allTeams?.map((team) => (
-             <MenuItem value={`${team.full_name}`} >{team.full_name}</MenuItem>
-          ))}         
-        </Select>
-       )}
-       />
+
+        <Controller
+          control={control}
+          name="team"
+          default=""
+          render={({ field }) => (
+            <Select {...field} sx={{ width: "14.5rem" }}>
+              {allTeams?.map((team) => (
+                <MenuItem value={`${team.full_name}`}>
+                  {team.full_name}
+                </MenuItem>
+              ))}
+            </Select>
+          )}
+        />
 
         <Controller
           name="email"
@@ -158,7 +161,7 @@ const FormNewsLetter = () => {
           </Button>
           <Dialog
             open={open}
-            onClose={handleClose}
+            
             aria-labelledby="alert-dialog-title"
             aria-describedby="alert-dialog-description"
           >
@@ -172,7 +175,7 @@ const FormNewsLetter = () => {
                   {helpers.upperCase(infos.team)}, fique de olho no seu e-mail{" "}
                   {helpers.upperCase(infos.email)}, lá enviaremos notícias sobre
                   a NBA e talvez sobre o seu GOAT escolhido, que foi o{" "}
-                  {helpers.upperCase(infos.theGoat)}!                  
+                  {helpers.upperCase(infos.theGoat)}!
                 </Box>
               </DialogContentText>
             </DialogContent>

@@ -37,37 +37,51 @@ const Teams = () => {
         display: "flex",
         flexDirection: "column",
         justifyContent: "space-between",
-        
       }}
     >
       <NavBar />
-      <Grid 
-      container 
-      direction={{xm: 'none', lg: 'column'}}
-      alignItems="center"
-      justifyContent="center"
+      <Grid
+        container
+        direction={{ xm: "none", lg: "column" }}
+        alignItems="center"
+        justifyContent="center"
       >
-        <Grid item xs={12}
-        >
-          <Typography variant="h6">Esse são os times da NBA:</Typography>
-          <TableContainer >
+        <Grid item xs={12}>
+          <Typography variant="h4">Esse são os times da NBA:</Typography>
+          <TableContainer>
             <Table>
               <TableHead>
                 <TableRow>
-                  <TableCell align="center">Nome</TableCell>
-                  <TableCell align="center">Cidade</TableCell>
-                  <TableCell align="center">Conferência</TableCell>
-                  <TableCell align="center">Abreviação</TableCell>
+                  <TableCell sx={{ fontSize: "1.5rem" }} align="center">
+                    Nome
+                  </TableCell>
+                  <TableCell sx={{ fontSize: "1.5rem" }} align="center">
+                    Cidade
+                  </TableCell>
+                  <TableCell sx={{ fontSize: "1.5rem" }} align="center">
+                    Conferência
+                  </TableCell>
+                  <TableCell sx={{ fontSize: "1.5rem" }} align="center">
+                    Abreviação
+                  </TableCell>
                 </TableRow>
               </TableHead>
               <h1> {loading} </h1>
-              <TableBody >
+              <TableBody>
                 {teams?.map((team) => (
                   <TableRow>
-                    <TableCell align="center">{team?.full_name}</TableCell>
-                    <TableCell align="center">{team?.city}</TableCell>
-                    <TableCell align="center">{team?.conference}</TableCell>
-                    <TableCell align="center">{team?.abbreviation}</TableCell>
+                    <TableCell sx={{ fontSize: "1.5rem" }} align="center">
+                      {team?.full_name}
+                    </TableCell>
+                    <TableCell sx={{ fontSize: "1.5rem" }} align="center">
+                      {team?.city}
+                    </TableCell>
+                    <TableCell sx={{ fontSize: "1.5rem" }} align="center">
+                      {team?.conference}
+                    </TableCell>
+                    <TableCell sx={{ fontSize: "1.5rem" }} align="center">
+                      {team?.abbreviation}
+                    </TableCell>
                   </TableRow>
                 ))}
               </TableBody>

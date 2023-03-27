@@ -4,12 +4,18 @@ import CloseIcon from "@mui/icons-material/Close";
 
 import basketball from "../../images/basketball.png";
 
-
 const WelcomeNba = () => {
   const [open, setOpen] = React.useState(true);
-  
+
   return (
-    <Box sx={{ width: {xs: '100%', lg:"60%"}, position: 'absolute', right: {xs: '0%',lg: '5%'}, top: '38%',  }}>
+    <Box
+      sx={{
+        width: { xs: "100%", lg: "40%" },
+        position: "absolute",
+        right: { xs: "0%", lg: "25%" },
+        top: "38%",
+      }}
+    >
       <Collapse in={open}>
         <Alert
           action={
@@ -24,21 +30,32 @@ const WelcomeNba = () => {
               <CloseIcon fontSize="inherit" />
             </IconButton>
           }
-          sx={{ mb: 2, backgroundColor: "darkblue", color: "white" }}
+          sx={{ mb: 2, backgroundColor: "#0E499D", color: "white" }}
         >
-          <Typography variant="h5">Bem vindo ao melhor site para entender tudo sobre NBA!</Typography>
-          
+          <Typography variant="h5">
+            Bem vindo ao NBA Stats, o melhor site (segundo eu mesmo) para entender tudo sobre NBA!
+          </Typography>
         </Alert>
       </Collapse>
-
-      <img
-        onClick={() => {
-          setOpen(true);
+      <Box
+        sx={{
+          width: "10rem",
+          cursor: "pointer",
+          transition: "ease-in-out 0.5s",
+          "&:hover": {
+            width: "14rem",
+          },
         }}
-        style={{ width: "10rem", cursor: 'pointer'}}
-        alt="basketball"
-        src={basketball}
-      />
+      >
+        <img
+          style={{ width: "100%" }}
+          onClick={() => {
+            setOpen(true);
+          }}
+          alt="basketball"
+          src={basketball}
+        />
+      </Box>
     </Box>
   );
 };

@@ -4,7 +4,6 @@ import { Box } from "@mui/material";
 import { NavBar, FooterPag, WelcomeNba } from "components";
 import nba from "../../images/nba.jpg";
 
-
 const Home = () => {
   return (
     <Box
@@ -16,7 +15,7 @@ const Home = () => {
         justifyContent: "space-between",
         backgroundImage: `url(${nba})`,
         backgroundRepeat: "no-repeat",
-        backgroundSize: {sm: "200%", md: "100%", lg: "100%"},
+        backgroundSize: { sm: "200%", md: "100%", lg: "100%" },
         backgroundPosition: { xs: "-50rem", sm: "0rem" },
       }}
     >
@@ -26,7 +25,6 @@ const Home = () => {
           display: "flex",
           flexDirection: "column",
           alignItems: "center",
-          mb: { xs: "-14rem", sm: "-13rem", lg: "-28rem" },
         }}
       />
       <FooterPag />

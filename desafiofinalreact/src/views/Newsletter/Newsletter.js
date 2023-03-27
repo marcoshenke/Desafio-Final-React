@@ -1,13 +1,8 @@
 import React from "react";
 import { NavBar, FooterPag, FormNewsLetter } from "components";
-import {
-  Box
-  
-} from "@mui/material";
+import { Box } from "@mui/material";
 
 const Newsletter = () => {
-  
-
   return (
     <Box
       sx={{
@@ -16,12 +11,11 @@ const Newsletter = () => {
         display: "flex",
         flexDirection: "column",
         justifyContent: "space-between",
-        
       }}
     >
       <NavBar />
-     
-      <FormNewsLetter/>
+
+      <FormNewsLetter />
 
       <FooterPag />
     </Box>
