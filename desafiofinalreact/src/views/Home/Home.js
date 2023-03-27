@@ -1,10 +1,9 @@
 import React from "react";
-import { Box, Typography } from "@mui/material";
+import { Box } from "@mui/material";
 
 import { NavBar, FooterPag, WelcomeNba } from "components";
 import nba from "../../images/nba.jpg";
 
-import basketball from "../../images/basketball.png";
 
 const Home = () => {
   return (
@@ -17,7 +16,7 @@ const Home = () => {
         justifyContent: "space-between",
         backgroundImage: `url(${nba})`,
         backgroundRepeat: "no-repeat",
-        backgroundSize: { sm: "100%", md: "100%", lg: "100%" },
+        backgroundSize: {sm: "200%", md: "100%", lg: "100%"},
         backgroundPosition: { xs: "-50rem", sm: "0rem" },
       }}
     >

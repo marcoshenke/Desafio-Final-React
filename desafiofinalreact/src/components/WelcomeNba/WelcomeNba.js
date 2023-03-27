@@ -1,22 +1,22 @@
 import * as React from "react";
-import { Box, Alert, IconButton, Collapse, Button } from "@mui/material";
+import { Box, Alert, IconButton, Collapse, Typography } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
 
 import basketball from "../../images/basketball.png";
 
+
 const WelcomeNba = () => {
   const [open, setOpen] = React.useState(true);
-  const [hoverImage, setHoverImage] = React.useState(false);
-
+  
   return (
-    <Box sx={{ width: "60%" }}>
+    <Box sx={{ width: {xs: '100%', lg:"60%"}, position: 'absolute', right: {xs: '0%',lg: '5%'}, top: '38%',  }}>
       <Collapse in={open}>
         <Alert
           action={
             <IconButton
               aria-label="close"
               color="white"
-              size="small"
+              size="large"
               onClick={() => {
                 setOpen(false);
               }}
@@ -26,7 +26,8 @@ const WelcomeNba = () => {
           }
           sx={{ mb: 2, backgroundColor: "darkblue", color: "white" }}
         >
-          Bem vindo ao melhor site para entender tudo sobre NBA!
+          <Typography variant="h5">Bem vindo ao melhor site para entender tudo sobre NBA!</Typography>
+          
         </Alert>
       </Collapse>
 
@@ -34,10 +35,8 @@ const WelcomeNba = () => {
         onClick={() => {
           setOpen(true);
         }}
-        onMouseEnter={() => setHoverImage(true)}
-        onMouseLeave={() => setHoverImage(false)}
-        style={{ width: "7rem" }}
-        alt="basktball"
+        style={{ width: "10rem", cursor: 'pointer'}}
+        alt="basketball"
         src={basketball}
       />
     </Box>

@@ -50,7 +50,7 @@ const Teams = () => {
         <Grid item xs={12}
         >
           <Typography variant="h6">Esse são os times da NBA:</Typography>
-          <TableContainer>
+          <TableContainer >
             <Table>
               <TableHead>
                 <TableRow>
@@ -61,7 +61,7 @@ const Teams = () => {
                 </TableRow>
               </TableHead>
               <h1> {loading} </h1>
-              <TableBody>
+              <TableBody >
                 {teams?.map((team) => (
                   <TableRow>
                     <TableCell align="center">{team?.full_name}</TableCell>

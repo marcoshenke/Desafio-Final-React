@@ -26,7 +26,7 @@ const pages = [
   { text: "Newsletter", url: "/newsletter" },
 ];
 
-const settings = ["Profile", "Account", "Dashboard", "Logout"];
+const settings = ["Perfil", "Conta", "Dashboard", "Sair"];
 
 const NavBar = () => {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
@@ -81,10 +81,7 @@ const NavBar = () => {
               sx={{
                 display: { xs: "block", md: "none" },
               }}
-            >
-              {pages.map((page, index) => (
-                <MenuItem key={index} onClick={handleCloseNavMenu}>
-                  <Typography textAlign="center">
+            > sx={{fontSize: '2rem'}}extAlign="center">
                     <Link 
                     to={page.url}
                     style={{ color: "inherit", textDecoration: "inherit" }}
@@ -102,7 +99,7 @@ const NavBar = () => {
                 onClick={handleCloseNavMenu}
                 sx={{ my: 2, color: "white", display: "block" }}
               >
-                <Typography variant="h6">
+                <Typography variant="h6" sx={{':hover':{fontSize: '1.5rem', color: 'red', fontWeight: ''}}}>
                   <Link
                     to={page.url}
                     style={{ color: "inherit", textDecoration: "inherit" }}
@@ -117,10 +114,7 @@ const NavBar = () => {
           <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Open settings">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                <Avatar alt="Minha foto" src={eu} />
-              </IconButton>
-            </Tooltip>
-            <Menu
+                <Avatar alt="Min sx={{fontSize: '2rem'}}
               sx={{ mt: "45px" }}
               id="menu-appbar"
               anchorEl={anchorElUser}
