@@ -81,7 +81,10 @@ const NavBar = () => {
               sx={{
                 display: { xs: "block", md: "none" },
               }}
-            > sx={{fontSize: '2rem'}}extAlign="center">
+            >
+              {pages.map((page, index) => (
+                <MenuItem key={index} onClick={handleCloseNavMenu}>
+                  <Typography textAlign="center">
                     <Link 
                     to={page.url}
                     style={{ color: "inherit", textDecoration: "inherit" }}
@@ -114,7 +117,10 @@ const NavBar = () => {
           <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Open settings">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                <Avatar alt="Min sx={{fontSize: '2rem'}}
+                <Avatar alt="Minha foto" src={eu} />
+              </IconButton>
+            </Tooltip>
+            <Menu
               sx={{ mt: "45px" }}
               id="menu-appbar"
               anchorEl={anchorElUser}
