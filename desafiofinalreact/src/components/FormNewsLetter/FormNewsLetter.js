@@ -50,16 +50,16 @@ const FormNewsLetter = () => {
   const onSubmit = (data) => {
     setInfos(data);
     console.log(data);
-    reset();
+    reset();   
     if (!!errors) {
-      handleClose()
+      handleClickOpen()
     }
   };
 
   const [open, setOpen] = useState(false);
 
   const handleClickOpen = () => {
-    setOpen(true);
+     setOpen(true)
   };
 
   const handleClose = () => {
@@ -156,7 +156,7 @@ const FormNewsLetter = () => {
           control={control}
         />
         <Box pt={"0.2rem"}>
-          <Button variant="outlined" onClick={handleClickOpen} type="submit">
+          <Button variant="outlined" type="submit">
             Cadastrar
           </Button>
           <Dialog
